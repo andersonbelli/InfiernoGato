@@ -1,13 +1,19 @@
 extends Node2D
 
-var tandy_direction: int
+enum SelectedPlayerEnum { GIRL, DEVIL }
+
+var select
 var tandy_position: Vector2
 
-# Called when the node enters the scene tree for the first time.
+var selected_player: SelectedPlayerEnum
+
 func _ready() -> void:
-	pass # Replace with function body.
+	selected_player = SelectedPlayerEnum.GIRL
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if Input.is_action_just_pressed("change_character"):
+		if selected_player == SelectedPlayerEnum.GIRL:
+			selected_player = SelectedPlayerEnum.DEVIL
+		else:
+			selected_player = SelectedPlayerEnum.GIRL

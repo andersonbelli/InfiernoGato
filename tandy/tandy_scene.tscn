@@ -1,12 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://cdu1yit21brqh"]
+[gd_scene load_steps=12 format=3 uid="uid://32qun5mduow5"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_3aw73"]
-[ext_resource type="PackedScene" uid="uid://c34q06apiqloe" path="res://death/death_scene.tscn" id="1_7nvdj"]
 [ext_resource type="Texture2D" uid="uid://q3moeasn00di" path="res://assets/tandy/leg.svg" id="1_bwo5o"]
 [ext_resource type="Script" path="res://tandy/tandy.gd" id="1_o2mt6"]
 [ext_resource type="Texture2D" uid="uid://cahh7fuj2awkv" path="res://assets/tandy/armR.svg" id="2_20wg0"]
 [ext_resource type="Texture2D" uid="uid://dan2dr18erdnm" path="res://assets/tandy/body.svg" id="3_okbhq"]
-[ext_resource type="Script" path="res://death/death.gd" id="3_wm13l"]
 [ext_resource type="Texture2D" uid="uid://dvkgt1x35fe34" path="res://assets/tandy/head.svg" id="4_swgs4"]
 [ext_resource type="Texture2D" uid="uid://csfppl3b4edl8" path="res://assets/tandy/armL.svg" id="5_di4de"]
 
@@ -169,66 +166,62 @@ _data = {
 "run": SubResource("Animation_rku3f")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0jebx"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u7jsv"]
 height = 34.7328
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cnl47"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jbya3"]
 height = 62.0
 
-[node name="Node2D" type="Node2D"]
-script = ExtResource("1_3aw73")
-
-[node name="Death" parent="." instance=ExtResource("1_7nvdj")]
-position = Vector2(159, -130)
-script = ExtResource("3_wm13l")
-
-[node name="Tandy" type="CharacterBody2D" parent="."]
+[node name="Tandy" type="CharacterBody2D"]
 script = ExtResource("1_o2mt6")
 
-[node name="Leg2" type="Sprite2D" parent="Tandy"]
+[node name="Leg2" type="Sprite2D" parent="."]
 position = Vector2(18.4088, 80.0788)
 texture = ExtResource("1_bwo5o")
 offset = Vector2(2, 25)
 
-[node name="Leg" type="Sprite2D" parent="Tandy"]
+[node name="Leg" type="Sprite2D" parent="."]
 position = Vector2(-28.5912, 82.0788)
 texture = ExtResource("1_bwo5o")
 offset = Vector2(4, 23)
 
-[node name="ArmR" type="Sprite2D" parent="Tandy"]
+[node name="ArmR" type="Sprite2D" parent="."]
 position = Vector2(38.9088, 25.5788)
 texture = ExtResource("2_20wg0")
 offset = Vector2(5, 15)
 
-[node name="Body" type="Sprite2D" parent="Tandy"]
+[node name="Body" type="Sprite2D" parent="."]
 position = Vector2(-1.59117, 4.07877)
 texture = ExtResource("3_okbhq")
 offset = Vector2(-2, 32)
 
-[node name="Head" type="Sprite2D" parent="Tandy"]
+[node name="Head" type="Sprite2D" parent="."]
 position = Vector2(-18.5912, -32.9212)
 texture = ExtResource("4_swgs4")
 offset = Vector2(12, -42)
 
-[node name="ArmL" type="Sprite2D" parent="Tandy"]
+[node name="ArmL" type="Sprite2D" parent="."]
 position = Vector2(-30.5912, 24.0788)
 texture = ExtResource("5_di4de")
 offset = Vector2(56, 3)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Tandy"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_kgul0")
 }
 autoplay = "run"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Tandy"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(5.44, 5.92)
-shape = SubResource("CapsuleShape2D_0jebx")
+shape = SubResource("CapsuleShape2D_u7jsv")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Tandy"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(-36, 104)
-shape = SubResource("CapsuleShape2D_cnl47")
+shape = SubResource("CapsuleShape2D_jbya3")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Tandy"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
 position = Vector2(26, 102)
-shape = SubResource("CapsuleShape2D_cnl47")
+shape = SubResource("CapsuleShape2D_jbya3")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(76, 12)
