@@ -24,18 +24,13 @@ func _ready() -> void:
 	parent = get_parent()
 
 func _physics_process(delta):
-	if parent.selected_player != parent.SelectedPlayerEnum.GIRL:
-		set_modulate(Color("7e7e7e"))
-	else:
-		set_modulate(default_modulate)
+	set_modulate(parent.boneco_color(parent.SelectedPlayerEnum.GIRL))
 	
-	if parent.selected_player == parent.SelectedPlayerEnum.GIRL && Input.is_action_just_pressed("attack"):
+	if Input.is_action_just_pressed("attack") && parent.selected_player == parent.SelectedPlayerEnum.GIRL:
 		shoot(get_global_mouse_position())
-		
-		print('shot!')
 	
 	arm_l.look_at(get_global_mouse_position())
-	print('arm ', marker.position)
+	## TODO: Marker should follow point of the GUN
 	
 	parent.tandy_position = position
 	

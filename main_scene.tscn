@@ -7,17 +7,22 @@
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Ground" type="Sprite2D" parent="."]
-position = Vector2(641, 728)
-scale = Vector2(1.12, 1)
+[node name="Parallax2D" type="Parallax2D" parent="."]
+repeat_size = Vector2(3357, 0)
+autoscroll = Vector2(-55, 0)
+repeat_times = 2
+
+[node name="Ground" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(641, 570)
+scale = Vector2(1, 0.892858)
 texture = ExtResource("2_52p80")
 
 [node name="Tandy" parent="." instance=ExtResource("1_rajap")]
-position = Vector2(217, 367)
+position = Vector2(207, 263)
 scale = Vector2(0.4, 0.4)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(2, 110)
+position = Vector2(-7, -43)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(582, 386)

@@ -13,7 +13,16 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("change_character"):
-		if selected_player == SelectedPlayerEnum.GIRL:
-			selected_player = SelectedPlayerEnum.DEVIL
-		else:
-			selected_player = SelectedPlayerEnum.GIRL
+		change_boneco()
+
+func change_boneco():
+	if selected_player == SelectedPlayerEnum.GIRL:
+		selected_player = SelectedPlayerEnum.DEVIL
+	else:
+		selected_player = SelectedPlayerEnum.GIRL
+
+func boneco_color(self_boneco: SelectedPlayerEnum) -> Color:
+	if selected_player != self_boneco:
+		return Color("7e7e7e")
+	else:
+		return Color("FFFFFF")

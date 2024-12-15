@@ -1,0 +1,71 @@
+[gd_scene load_steps=8 format=3 uid="uid://c34q06apiqloe"]
+
+[ext_resource type="Texture2D" uid="uid://btduladydbek1" path="res://icon.svg" id="1_6xy40"]
+[ext_resource type="Script" path="res://death/devil.gd" id="1_hdxra"]
+[ext_resource type="Texture2D" uid="uid://bndhamtsqcmwq" path="res://assets/devil/scythe.svg" id="3_3n8ap"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0a1t1"]
+height = 114.0
+
+[sub_resource type="Animation" id="Animation_7ypi8"]
+resource_name = "attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Scythe:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -1.11489, 1.48797, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_1hugo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Scythe:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pxneh"]
+_data = {
+"RESET": SubResource("Animation_1hugo"),
+"attack": SubResource("Animation_7ypi8")
+}
+
+[node name="Devil" type="Area2D"]
+scale = Vector2(1.6087, 1.59999)
+script = ExtResource("1_hdxra")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+scale = Vector2(3.96, 1)
+shape = SubResource("CapsuleShape2D_0a1t1")
+
+[node name="Area2D" type="Sprite2D" parent="."]
+scale = Vector2(0.720001, 0.84)
+texture = ExtResource("1_6xy40")
+
+[node name="Scythe" type="Sprite2D" parent="."]
+position = Vector2(5.59457, -3.75003)
+scale = Vector2(0.238372, 0.238372)
+texture = ExtResource("3_3n8ap")
+offset = Vector2(349.441, -159.94)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pxneh")
+}
+autoplay = "RESET"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://cdu1yit21brqh"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_3aw73"]
-[ext_resource type="PackedScene" uid="uid://c34q06apiqloe" path="res://death/death_scene.tscn" id="1_7nvdj"]
-[ext_resource type="Script" path="res://death/death.gd" id="3_wm13l"]
+[ext_resource type="PackedScene" uid="uid://c34q06apiqloe" path="res://death/devil_scene.tscn" id="1_7nvdj"]
+[ext_resource type="Script" path="res://death/devil.gd" id="3_wm13l"]
 [ext_resource type="PackedScene" uid="uid://32qun5mduow5" path="res://tandy/tandy_scene.tscn" id="4_jyve6"]
 
 [node name="Node2D" type="Node2D"]
