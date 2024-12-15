@@ -13,7 +13,8 @@ scale = Vector2(1.12, 1)
 texture = ExtResource("2_52p80")
 
 [node name="Tandy" parent="." instance=ExtResource("1_rajap")]
-position = Vector2(92, 294)
+position = Vector2(217, 367)
+scale = Vector2(0.4, 0.4)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(2, 110)
@@ -23,3 +24,6 @@ position = Vector2(582, 386)
 rotation = 3.13622
 scale = Vector2(59.0252, -3.8)
 shape = SubResource("WorldBoundaryShape2D_0m33l")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(642, 363)

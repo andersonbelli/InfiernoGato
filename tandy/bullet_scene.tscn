@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfo3uu4ouaof2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mvbmf"]
+radius = 9.0
+height = 22.0
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_dnnvl"]
+
+[node name="Bullet" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_mvbmf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -4.76837e-07)
+scale = Vector2(15, 15)
+texture = SubResource("CanvasTexture_dnnvl")

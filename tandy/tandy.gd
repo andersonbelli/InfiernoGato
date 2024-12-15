@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@export var bullet_scene: PackedScene
+
 @onready var leg_2: Sprite2D = $Leg2
 @onready var leg: Sprite2D = $Leg
 @onready var arm_l: Sprite2D = $ArmL
@@ -7,21 +9,33 @@ extends CharacterBody2D
 @onready var body: Sprite2D = $Body
 @onready var head: Sprite2D = $Head
 
+@onready var marker: Marker2D = $ArmL/Marker2D
+
 var speed = 30.0
 var jump_speed = -120.0
 
 var bullets = 6
 
+var default_modulate
 var parent: Node
 
 func _ready() -> void:
+	default_modulate = modulate
 	parent = get_parent()
 
 func _physics_process(delta):
+	if parent.selected_player != parent.SelectedPlayerEnum.GIRL:
+		set_modulate(Color("7e7e7e"))
+	else:
+		set_modulate(default_modulate)
+	
 	if parent.selected_player == parent.SelectedPlayerEnum.GIRL && Input.is_action_just_pressed("attack"):
+		shoot(get_global_mouse_position())
+		
 		print('shot!')
 	
 	arm_l.look_at(get_global_mouse_position())
+	print('arm ', marker.position)
 	
 	parent.tandy_position = position
 	
@@ -37,3 +51,16 @@ func _physics_process(delta):
 		pass
 		
 	move_and_slide()
+
+func shoot(mouse_position):
+	var bullet = bullet_scene.instantiate() as RigidBody2D
+	
+	bullet.position = marker.position
+	bullet.rotation_degrees = global_rotation
+	
+	var direction = global_position.direction_to(mouse_position)
+	var impulse = direction * 1600
+	bullet.apply_central_impulse(impulse)
+	
+	add_child(bullet)
+	
