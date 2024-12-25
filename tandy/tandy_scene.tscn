@@ -1,12 +1,87 @@
 [gd_scene load_steps=13 format=3 uid="uid://32qun5mduow5"]
 
-[ext_resource type="Texture2D" uid="uid://q3moeasn00di" path="res://assets/tandy/leg.svg" id="1_bwo5o"]
 [ext_resource type="Script" path="res://tandy/tandy.gd" id="1_o2mt6"]
-[ext_resource type="Texture2D" uid="uid://cahh7fuj2awkv" path="res://assets/tandy/armR.svg" id="2_20wg0"]
+[ext_resource type="Texture2D" uid="uid://cahh7fuj2awkv" path="res://tandy/assets/armR.svg" id="2_20wg0"]
 [ext_resource type="PackedScene" uid="uid://bfo3uu4ouaof2" path="res://tandy/bullet_scene.tscn" id="2_n263n"]
-[ext_resource type="Texture2D" uid="uid://dan2dr18erdnm" path="res://assets/tandy/body.svg" id="3_okbhq"]
-[ext_resource type="Texture2D" uid="uid://dvkgt1x35fe34" path="res://assets/tandy/head.svg" id="4_swgs4"]
-[ext_resource type="Texture2D" uid="uid://csfppl3b4edl8" path="res://assets/tandy/armL.svg" id="5_di4de"]
+[ext_resource type="Texture2D" uid="uid://dan2dr18erdnm" path="res://tandy/assets/body.svg" id="3_okbhq"]
+[ext_resource type="Texture2D" uid="uid://byr321jvfns81" path="res://tandy/assets/leg.svg" id="3_xs6io"]
+[ext_resource type="Texture2D" uid="uid://dvkgt1x35fe34" path="res://tandy/assets/head.svg" id="4_swgs4"]
+[ext_resource type="Texture2D" uid="uid://csfppl3b4edl8" path="res://tandy/assets/armL.svg" id="5_di4de"]
+
+[sub_resource type="Animation" id="Animation_cehse"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ArmR:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Leg2:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Leg:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Head:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Head:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_rku3f"]
 resource_name = "run"
@@ -86,81 +161,6 @@ tracks/5/keys = {
 "values": [Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_cehse"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Body:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ArmR:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Leg2:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Leg:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Head:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Head:scale")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kgul0"]
 _data = {
 "RESET": SubResource("Animation_cehse"),
@@ -175,17 +175,18 @@ height = 62.0
 
 [node name="Tandy" type="CharacterBody2D"]
 position = Vector2(0, -1)
+collision_mask = 26
 script = ExtResource("1_o2mt6")
 bullet_scene = ExtResource("2_n263n")
 
 [node name="Leg2" type="Sprite2D" parent="."]
 position = Vector2(18.4088, 80.0788)
-texture = ExtResource("1_bwo5o")
+texture = ExtResource("3_xs6io")
 offset = Vector2(2, 25)
 
 [node name="Leg" type="Sprite2D" parent="."]
 position = Vector2(-28.5912, 82.0788)
-texture = ExtResource("1_bwo5o")
+texture = ExtResource("3_xs6io")
 offset = Vector2(4, 23)
 
 [node name="ArmR" type="Sprite2D" parent="."]

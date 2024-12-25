@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bndhamtsqcmwq"
-path="res://.godot/imported/scythe.svg-1db8922da9c2c01087be133ae6f08a1c.ctex"
+uid="uid://cumluwqsb3wg7"
+path="res://.godot/imported/1bat2.svg-aefafeea583bb7df1eac5f0673f33031.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/devil/scythe.svg"
-dest_files=["res://.godot/imported/scythe.svg-1db8922da9c2c01087be133ae6f08a1c.ctex"]
+source_file="res://enemies/bat/assets/1bat2.svg"
+dest_files=["res://.godot/imported/1bat2.svg-aefafeea583bb7df1eac5f0673f33031.ctex"]
 
 [params]
 

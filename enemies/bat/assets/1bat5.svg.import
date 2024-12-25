@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://csfppl3b4edl8"
-path="res://.godot/imported/armL.svg-7e83616b0fdd9b438ae51dc28c88c987.ctex"
+uid="uid://bpghp2pgr0pqt"
+path="res://.godot/imported/1bat5.svg-c7c2c8ee96f28f3b923d21afd2672d99.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tandy/armL.svg"
-dest_files=["res://.godot/imported/armL.svg-7e83616b0fdd9b438ae51dc28c88c987.ctex"]
+source_file="res://enemies/bat/assets/1bat5.svg"
+dest_files=["res://.godot/imported/1bat5.svg-c7c2c8ee96f28f3b923d21afd2672d99.ctex"]
 
 [params]
 

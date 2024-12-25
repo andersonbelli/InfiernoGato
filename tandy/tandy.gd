@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name TandyClass
+
 @export var bullet_scene: PackedScene
 
 @onready var leg_2: Sprite2D = $Leg2
@@ -11,13 +13,15 @@ extends CharacterBody2D
 
 @onready var marker: Marker2D = $ArmL/Marker2D
 
+var default_position: Vector2
+
 var speed = 30.0
 var jump_speed = -120.0
 
 var bullets = 6
 
 var default_modulate
-var parent: Node
+var parent: PlayerClass
 
 func _ready() -> void:
 	default_modulate = modulate
@@ -38,12 +42,11 @@ func _physics_process(delta):
 	velocity.y += 100 * delta
 
 	# Handle Jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = jump_speed
-	
-	if is_on_floor():
-		#velocity.x += speed * delta
-		pass
+	if Input.is_action_just_pressed("ui_accept"):
+		if is_on_floor():
+			velocity.y = jump_speed
+	else:
+		move_to_original_position()
 		
 	move_and_slide()
 
@@ -59,3 +62,16 @@ func shoot(mouse_position):
 	
 	add_child(bullet)
 	
+func move_to_original_position():
+	if is_on_floor():
+		if default_position == Vector2.ZERO:
+			default_position = position
+		
+		if (default_position != Vector2.ZERO && round_to_dec(default_position.y, 1) != round_to_dec(position.y, 1)):
+			var tween = create_tween()
+			tween.tween_property(self, "position", default_position, 1)
+			await tween.finished
+			tween.kill()
+
+func round_to_dec(num, digit):
+	return round(num * pow(10.0, digit)) / pow(10.0, digit)

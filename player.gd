@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name PlayerClass
+
 enum SelectedPlayerEnum { GIRL, DEVIL }
 
 var select

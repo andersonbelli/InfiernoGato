@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bfo3uu4ouaof2"]
+[gd_scene load_steps=4 format=3 uid="uid://bfo3uu4ouaof2"]
+
+[ext_resource type="Script" path="res://tandy/bullet_scene.gd" id="1_7bgbl"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mvbmf"]
 radius = 9.0
@@ -9,6 +11,7 @@ height = 22.0
 [node name="Bullet" type="RigidBody2D"]
 collision_layer = 4
 collision_mask = 2
+script = ExtResource("1_7bgbl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708

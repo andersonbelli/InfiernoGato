@@ -1,11 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://c7pn8sg7quct0"]
+[gd_scene load_steps=7 format=3 uid="uid://c7pn8sg7quct0"]
 
+[ext_resource type="Script" path="res://main_scene.gd" id="1_2r0aq"]
+[ext_resource type="Texture2D" uid="uid://cj5bolcd8nb31" path="res://levels/ground.png" id="1_kshbu"]
 [ext_resource type="PackedScene" uid="uid://cdu1yit21brqh" path="res://player_scene.tscn" id="1_rajap"]
-[ext_resource type="Texture2D" uid="uid://binfxlp12fxcy" path="res://assets/ground.png" id="2_52p80"]
+[ext_resource type="PackedScene" uid="uid://wyehcnibcwfo" path="res://enemies/bat/enemy_bat.tscn" id="2_ryulv"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0m33l"]
 
+[sub_resource type="Curve2D" id="Curve2D_fgrcc"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 585, -1, 0, 0, 0, 0, 785, -5, 0, 0, 0, 0, 997, -17, 0, 0, 0, 0, 1189, -19, 0, 0, 0, 0, 1285, 1, 0, 0, 0, 0, 1359, 55, 0, 0, 0, 0, 1373, 147, 0, 0, 0, 0, 1407, 183)
+}
+point_count = 8
+
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_2r0aq")
+EnemyBat = ExtResource("2_ryulv")
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
 repeat_size = Vector2(3357, 0)
@@ -15,16 +25,18 @@ repeat_times = 2
 [node name="Ground" type="Sprite2D" parent="Parallax2D"]
 position = Vector2(641, 570)
 scale = Vector2(1, 0.892858)
-texture = ExtResource("2_52p80")
+texture = ExtResource("1_kshbu")
 
-[node name="Tandy" parent="." instance=ExtResource("1_rajap")]
+[node name="Player" parent="." instance=ExtResource("1_rajap")]
 position = Vector2(207, 263)
 scale = Vector2(0.4, 0.4)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Ground" type="StaticBody2D" parent="."]
 position = Vector2(-7, -43)
+collision_layer = 16
+collision_mask = 11
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
 position = Vector2(582, 386)
 rotation = 3.13622
 scale = Vector2(59.0252, -3.8)
@@ -32,3 +44,11 @@ shape = SubResource("WorldBoundaryShape2D_0m33l")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(642, 363)
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(8, -32)
+curve = SubResource("Curve2D_fgrcc")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(585, -1)
+rotation = -0.0199973

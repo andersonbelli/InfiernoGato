@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvkgt1x35fe34"
-path="res://.godot/imported/head.svg-f6258f86c90fb11dcd77f7949907c368.ctex"
+uid="uid://cj5bolcd8nb31"
+path="res://.godot/imported/ground.png-c4ae56c26613080a2386066f2157052d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tandy/head.svg"
-dest_files=["res://.godot/imported/head.svg-f6258f86c90fb11dcd77f7949907c368.ctex"]
+source_file="res://levels/ground.png"
+dest_files=["res://.godot/imported/ground.png-c4ae56c26613080a2386066f2157052d.ctex"]
 
 [params]
 
@@ -32,6 +32,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

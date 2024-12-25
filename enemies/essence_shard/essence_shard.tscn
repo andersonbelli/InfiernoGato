@@ -1,0 +1,90 @@
+[gd_scene load_steps=9 format=3 uid="uid://cl0dthh625hu6"]
+
+[ext_resource type="Script" path="res://enemies/essence_shard/essence_shard.gd" id="1_te2mm"]
+[ext_resource type="Texture2D" uid="uid://b4l0bap3hbkmv" path="res://enemies/essence_shard/essence_shard.png" id="2_r3va5"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_in2n7"]
+friction = 0.15
+bounce = 1.0
+absorbent = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s1u54"]
+size = Vector2(40, 40)
+
+[sub_resource type="Animation" id="Animation_cb8su"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vto1l"]
+resource_name = "timer_running_out"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.3)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3owy7"]
+_data = {
+"RESET": SubResource("Animation_cb8su"),
+"timer_running_out": SubResource("Animation_vto1l")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_si4cj"]
+
+[node name="RigidBodyEssenceShard" type="RigidBody2D"]
+collision_layer = 8
+collision_mask = 17
+mass = 49.24
+physics_material_override = SubResource("PhysicsMaterial_in2n7")
+script = ExtResource("1_te2mm")
+
+[node name="AreaShard" type="Area2D" parent="."]
+scale = Vector2(10.0511, 6.67404)
+collision_layer = 8
+collision_mask = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaShard"]
+light_mask = 0
+visibility_layer = 0
+scale = Vector2(1.74301, 1.55335)
+shape = SubResource("RectangleShape2D_s1u54")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3owy7")
+}
+
+[node name="EssenceShard" type="Sprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_r3va5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_si4cj")
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
+[connection signal="area_entered" from="AreaShard" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="AreaShard" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

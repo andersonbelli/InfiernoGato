@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dan2dr18erdnm"
-path="res://.godot/imported/body.svg-7315d188b5b2dafb7757ef167aa8c254.ctex"
+uid="uid://bndhamtsqcmwq"
+path="res://.godot/imported/scythe.svg-2bc5a5ae7526f76aaa01527a1987578e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tandy/body.svg"
-dest_files=["res://.godot/imported/body.svg-7315d188b5b2dafb7757ef167aa8c254.ctex"]
+source_file="res://death/assets/scythe.svg"
+dest_files=["res://.godot/imported/scythe.svg-2bc5a5ae7526f76aaa01527a1987578e.ctex"]
 
 [params]
 
