@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://32qun5mduow5"]
+[gd_scene load_steps=14 format=3 uid="uid://32qun5mduow5"]
 
 [ext_resource type="Script" path="res://tandy/tandy.gd" id="1_o2mt6"]
 [ext_resource type="Texture2D" uid="uid://cahh7fuj2awkv" path="res://tandy/assets/armR.svg" id="2_20wg0"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://byr321jvfns81" path="res://tandy/assets/leg.svg" id="3_xs6io"]
 [ext_resource type="Texture2D" uid="uid://dvkgt1x35fe34" path="res://tandy/assets/head.svg" id="4_swgs4"]
 [ext_resource type="Texture2D" uid="uid://csfppl3b4edl8" path="res://tandy/assets/armL.svg" id="5_di4de"]
+[ext_resource type="Texture2D" uid="uid://pe6fa1ml20tq" path="res://tandy/assets/shot_light.png" id="7_2upml"]
 
 [sub_resource type="Animation" id="Animation_cehse"]
 length = 0.001
@@ -212,6 +213,13 @@ offset = Vector2(56, 3)
 [node name="Marker2D" type="Marker2D" parent="ArmL"]
 position = Vector2(106.591, -12.0788)
 
+[node name="ShotLight" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-15, 1)
+scale = Vector2(2.205, 2.205)
+texture = ExtResource("7_2upml")
+offset = Vector2(15, -1)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_kgul0")
@@ -229,3 +237,8 @@ shape = SubResource("CapsuleShape2D_jbya3")
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
 position = Vector2(26, 102)
 shape = SubResource("CapsuleShape2D_jbya3")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.6
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

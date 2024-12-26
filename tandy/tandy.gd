@@ -12,6 +12,9 @@ class_name TandyClass
 @onready var head: Sprite2D = $Head
 
 @onready var marker: Marker2D = $ArmL/Marker2D
+@onready var shot_light: Sprite2D = $ShotLight
+@onready var timer: Timer = $Timer
+
 
 var default_position: Vector2
 
@@ -30,13 +33,26 @@ func _ready() -> void:
 func _physics_process(delta):
 	set_modulate(parent.boneco_color(parent.SelectedPlayerEnum.GIRL))
 	
-	if Input.is_action_just_pressed("attack") && parent.selected_player == parent.SelectedPlayerEnum.GIRL:
-		shoot(get_global_mouse_position())
+	parent.tandy_position = position
 	
 	arm_l.look_at(get_global_mouse_position())
-	## TODO: Marker should follow point of the GUN
+	## Defines where the bullet should come from considering the arm/gun rotation
+	shot_light.global_position = marker.global_position
+	shot_light.rotation_degrees = arm_l.rotation_degrees
 	
-	parent.tandy_position = position
+	if not timer.is_stopped():
+		shot_light.visible = false
+	
+	if Input.is_action_just_pressed("attack") && parent.selected_player == parent.SelectedPlayerEnum.GIRL:
+		if timer.is_stopped():
+			timer.start()
+			shot_light.visible = true
+			shoot(get_global_mouse_position())
+		
+		#var tween = create_tween()
+		#tween.tween_property(shot_light, "visible", false, 0.5)
+		#await tween.finished
+		#tween.kill()
 	
 	# Add the gravity.
 	velocity.y += 100 * delta
@@ -53,11 +69,10 @@ func _physics_process(delta):
 func shoot(mouse_position):
 	var bullet = bullet_scene.instantiate() as RigidBody2D
 	
-	bullet.position = marker.position
-	bullet.rotation_degrees = global_rotation
+	bullet.position = shot_light.position
 	
 	var direction = global_position.direction_to(mouse_position)
-	var impulse = direction * 1600
+	var impulse = direction * 2600
 	bullet.apply_central_impulse(impulse)
 	
 	add_child(bullet)
@@ -75,3 +90,8 @@ func move_to_original_position():
 
 func round_to_dec(num, digit):
 	return round(num * pow(10.0, digit)) / pow(10.0, digit)
+
+
+func _on_timer_timeout() -> void:
+	shot_light.visible = false
+	timer.stop()
