@@ -15,11 +15,11 @@ class_name TandyClass
 @onready var shot_light: Sprite2D = $ShotLight
 @onready var timer: Timer = $Timer
 
-
 var default_position: Vector2
 
 var speed = 30.0
 var jump_speed = -120.0
+var is_jumping = false
 
 var bullets = 6
 
@@ -48,11 +48,6 @@ func _physics_process(delta):
 			timer.start()
 			shot_light.visible = true
 			shoot(get_global_mouse_position())
-		
-		#var tween = create_tween()
-		#tween.tween_property(shot_light, "visible", false, 0.5)
-		#await tween.finished
-		#tween.kill()
 	
 	# Add the gravity.
 	velocity.y += 100 * delta
@@ -61,8 +56,12 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_accept"):
 		if is_on_floor():
 			velocity.y = jump_speed
+			is_jumping = true
 	else:
-		move_to_original_position()
+		if is_on_floor():
+			is_jumping = false
+		if not is_jumping:
+			move_to_original_position()
 		
 	move_and_slide()
 
