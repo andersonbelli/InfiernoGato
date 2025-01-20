@@ -16,7 +16,7 @@ func chase_player(_enemy_type: ENEMY_TYPE_ENUM, _player: PlayerClass):
 	if enemy_type == ENEMY_TYPE_ENUM.FLOOR:
 		position.x -= _player.position.direction_to(position).x
 		velocity.x = enemy_velocity * position.direction_to(_player.position).x
-		
+
 	elif enemy_type == ENEMY_TYPE_ENUM.FLY:
 		position -= _player.position.direction_to(position)
 		velocity = enemy_velocity * position.direction_to(_player.position)

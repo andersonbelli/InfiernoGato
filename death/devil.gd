@@ -19,3 +19,13 @@ func _process(delta: float) -> void:
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	animation_player.play("RESET")
+
+
+func _on_area_2d_2_body_entered(body: Node2D) -> void:
+	print('SLASH!!!! ', body.name)
+	pass # Replace with function body.
+
+
+func _on_area_2d_2_area_entered(area: Area2D) -> void:
+	print('SLASH area!!!! ', area.name)
+	pass # Replace with function body.

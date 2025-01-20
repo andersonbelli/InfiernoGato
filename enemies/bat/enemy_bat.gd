@@ -1,6 +1,7 @@
 extends EnemyBaseClass
 
 @export var EssenceShard: PackedScene
+@export var Soul: PackedScene
 
 @onready var timer_hit_cooldown = $TimerHitCooldown
 
@@ -27,13 +28,19 @@ func _physics_process(delta):
 
 func _process(delta):
 	if enemy_health <= 0:
-		var item_drop: RigidBody2D = EssenceShard.instantiate()
-		item_drop.position = position
+		var soul = Soul.instantiate()
+		soul.position = position
 		
-		get_parent().add_child(item_drop)
+		get_parent().add_child(soul)
 		queue_free()
 
 func _on_area_2d_body_entered(body):
 	if body is BulletClass:
 		enemy_health -= body.bullet_damage
 		body.on_hit(self, position)
+
+func spawn_essence_shard():
+	var item_drop: RigidBody2D = EssenceShard.instantiate()
+	item_drop.position = position
+	
+	get_parent().add_child(item_drop)

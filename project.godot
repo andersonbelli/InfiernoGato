@@ -46,6 +46,7 @@ change_character={
 2d_physics/layer_3="bullet"
 2d_physics/layer_4="essence_shards"
 2d_physics/layer_5="world"
+2d_physics/layer_6="scythe"
 
 [rendering]
 

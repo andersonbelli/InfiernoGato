@@ -14,6 +14,8 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	Globals.player_position = tandy_position
+	
 	if Input.is_action_just_pressed("change_character"):
 		change_boneco()
 
