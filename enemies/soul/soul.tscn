@@ -1,0 +1,164 @@
+[gd_scene load_steps=9 format=3 uid="uid://b57ww8ta473d"]
+
+[ext_resource type="Script" path="res://enemies/soul/soul.gd" id="1_fifoi"]
+[ext_resource type="Texture2D" uid="uid://dvqafpmqgq2yc" path="res://enemies/soul/soul.svg" id="2_d26u4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s1u54"]
+size = Vector2(40, 40)
+
+[sub_resource type="Animation" id="Animation_cb8su"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Soul:skew")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Soul:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Soul:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.065, 0.065)]
+}
+
+[sub_resource type="Animation" id="Animation_vto1l"]
+resource_name = "timer_running_out"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.192157)]
+}
+
+[sub_resource type="Animation" id="Animation_ggke7"]
+resource_name = "afraid"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Soul:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.366667, 0.733333, 1.13333, 1.56667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.10821, 0.0, -0.10472, 0.0, 0.10821]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("Soul:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.933333, 2),
+"transitions": PackedFloat32Array(1, 3.13834, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Soul:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.666667, 1.36667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.065, 0.065), Vector2(0.07, 0.07), Vector2(0.065, 0.065), Vector2(0.055, 0.055)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3owy7"]
+_data = {
+"RESET": SubResource("Animation_cb8su"),
+"afraid": SubResource("Animation_ggke7"),
+"timer_running_out": SubResource("Animation_vto1l")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_si4cj"]
+
+[node name="RigidBodySoul" type="RigidBody2D"]
+collision_layer = 8
+collision_mask = 32
+mass = 4.136
+linear_damp_mode = 1
+script = ExtResource("1_fifoi")
+
+[node name="AreaShard" type="Area2D" parent="."]
+scale = Vector2(10.0511, 6.67404)
+collision_layer = 8
+collision_mask = 48
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaShard"]
+light_mask = 0
+visibility_layer = 0
+scale = Vector2(1.74301, 1.55335)
+shape = SubResource("RectangleShape2D_s1u54")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3owy7")
+}
+autoplay = "timer_running_out"
+
+[node name="Soul" type="Sprite2D" parent="."]
+position = Vector2(1, 8)
+scale = Vector2(0.065, 0.065)
+texture = ExtResource("2_d26u4")
+offset = Vector2(-20, -160)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_si4cj")
+
+[connection signal="area_entered" from="AreaShard" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
