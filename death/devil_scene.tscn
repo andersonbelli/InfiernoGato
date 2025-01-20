@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://c34q06apiqloe"]
 
-[ext_resource type="Texture2D" uid="uid://btduladydbek1" path="res://icon.svg" id="1_6xy40"]
 [ext_resource type="Script" path="res://death/devil.gd" id="1_hdxra"]
+[ext_resource type="Texture2D" uid="uid://bvuyxvc5encs7" path="res://death/assets/death.svg" id="2_6wgnj"]
 [ext_resource type="Texture2D" uid="uid://bndhamtsqcmwq" path="res://death/assets/scythe.svg" id="3_3n8ap"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0a1t1"]
@@ -42,7 +42,7 @@ shape = SubResource("CapsuleShape2D_0a1t1")
 
 [node name="Area2D" type="Sprite2D" parent="."]
 scale = Vector2(0.720001, 0.84)
-texture = ExtResource("1_6xy40")
+texture = ExtResource("2_6wgnj")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
