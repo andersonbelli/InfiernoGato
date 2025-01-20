@@ -8,15 +8,12 @@ const ENEMY_TYPE_ENUM = preload("res://enemies/enemy_type_enum.gd").EnemyType
 @onready var path_follow: PathFollow2D = $Path2D/PathFollow2D
 @onready var parallax: Parallax2D = $Parallax2D
 
+@onready var spawn_timer: Timer = $SpawnEnemiesTimer
+
 func _ready() -> void:
 	parallax.autoscroll.x = Globals.game_speed
-	
-	_on_timer_enemy_spawn_timeout()
 
-func _process(delta: float) -> void:
-	pass
-
-func _on_timer_enemy_spawn_timeout():
+func spawn_enemy():
 	var floor_or_fly = randi_range(0, 1)
 	
 	floor_or_fly = 0
@@ -42,3 +39,7 @@ func _on_timer_enemy_spawn_timeout():
 	enemy.chase_player(enemy.enemy_type, player)
 
 	add_child(enemy)
+
+
+func _on_spawn_enemies_timer_timeout() -> void:
+	spawn_enemy()

@@ -52,3 +52,9 @@ curve = SubResource("Curve2D_fgrcc")
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 position = Vector2(585, -1)
 rotation = -0.0199973
+
+[node name="SpawnEnemiesTimer" type="Timer" parent="."]
+wait_time = 2.5
+autostart = true
+
+[connection signal="timeout" from="SpawnEnemiesTimer" to="." method="_on_spawn_enemies_timer_timeout"]
