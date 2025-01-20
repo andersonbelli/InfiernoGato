@@ -244,7 +244,7 @@ collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_b2x2l")
 EssenceShard = ExtResource("2_kag1p")
-Soul = ExtResource("3_0qw6f")
+SoulScene = ExtResource("3_0qw6f")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 light_mask = 16

@@ -1,7 +1,7 @@
 extends EnemyBaseClass
 
 @export var EssenceShard: PackedScene
-@export var Soul: PackedScene
+@export var SoulScene: PackedScene
 
 @onready var timer_hit_cooldown = $TimerHitCooldown
 
@@ -28,7 +28,7 @@ func _physics_process(delta):
 
 func _process(delta):
 	if enemy_health <= 0:
-		var soul = Soul.instantiate()
+		var soul = SoulScene.instantiate()
 		soul.position = position
 		
 		get_parent().add_child(soul)
