@@ -60,7 +60,6 @@ func _physics_process(delta):
 	else:
 		if is_on_floor():
 			is_jumping = false
-		if not is_jumping:
 			move_to_original_position()
 		
 	move_and_slide()
@@ -77,15 +76,14 @@ func shoot(mouse_position):
 	add_child(bullet)
 	
 func move_to_original_position():
-	if is_on_floor():
-		if default_position == Vector2.ZERO:
-			default_position = position
-		
-		if (default_position != Vector2.ZERO && round_to_dec(default_position.y, 1) != round_to_dec(position.y, 1)):
-			var tween = create_tween()
-			tween.tween_property(self, "position", default_position, 1)
-			await tween.finished
-			tween.kill()
+	if default_position == Vector2.ZERO:
+		default_position = position
+	
+	if (default_position != Vector2.ZERO && round_to_dec(default_position.y, 1) != round_to_dec(position.y, 1)):
+		var tween = create_tween()
+		tween.tween_property(self, "position", default_position, 1)
+		await tween.finished
+		tween.kill()
 
 func round_to_dec(num, digit):
 	return round(num * pow(10.0, digit)) / pow(10.0, digit)
