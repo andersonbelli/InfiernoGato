@@ -1,12 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://bfo3uu4ouaof2"]
 
 [ext_resource type="Script" path="res://tandy/bullet_scene.gd" id="1_7bgbl"]
+[ext_resource type="Texture2D" uid="uid://b3ugs3grdse6r" path="res://tandy/assets/bullet.svg" id="2_t557v"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mvbmf"]
 radius = 9.0
 height = 22.0
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_dnnvl"]
 
 [node name="Bullet" type="RigidBody2D"]
 collision_layer = 4
@@ -18,6 +17,6 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_mvbmf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -4.76837e-07)
-scale = Vector2(15, 15)
-texture = SubResource("CanvasTexture_dnnvl")
+position = Vector2(1, -1.19209e-07)
+scale = Vector2(0.681567, 0.75)
+texture = ExtResource("2_t557v")

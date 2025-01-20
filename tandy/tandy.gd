@@ -44,10 +44,10 @@ func _physics_process(delta):
 		shot_light.visible = false
 	
 	if Input.is_action_just_pressed("attack") && parent.selected_player == parent.SelectedPlayerEnum.GIRL:
-		if timer.is_stopped():
-			timer.start()
-			shot_light.visible = true
-			shoot(get_global_mouse_position())
+		#if timer.is_stopped():
+		timer.start()
+		shot_light.visible = true
+		shoot(get_global_mouse_position())
 	
 	# Add the gravity.
 	velocity.y += 100 * delta
@@ -70,6 +70,9 @@ func shoot(mouse_position):
 	bullet.position = shot_light.position
 	
 	var direction = global_position.direction_to(mouse_position)
+	
+	bullet.look_at(direction)
+	
 	var impulse = direction * 2600
 	bullet.apply_central_impulse(impulse)
 	

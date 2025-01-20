@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="35.433411"
+   height="17.473175"
+   viewBox="0 0 35.433411 17.473176"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   sodipodi:docname="bullet.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="false"
+     inkscape:deskcolor="#3d3d3d"
+     inkscape:document-units="px"
+     inkscape:zoom="12.232947"
+     inkscape:cx="323.14371"
+     inkscape:cy="468.69326"
+     inkscape:window-width="1366"
+     inkscape:window-height="715"
+     inkscape:window-x="1358"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <linearGradient
+       id="linearGradient5"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#945a1c;stop-opacity:1;"
+         offset="0"
+         id="stop5" />
+      <stop
+         style="stop-color:#945a1c;stop-opacity:0;"
+         offset="1"
+         id="stop6" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient3"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop3" />
+      <stop
+         style="stop-color:#000000;stop-opacity:0;"
+         offset="1"
+         id="stop4" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient1"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#b8c722;stop-opacity:0.79555553;"
+         offset="0"
+         id="stop2" />
+      <stop
+         style="stop-color:#596113;stop-opacity:1;"
+         offset="1"
+         id="stop1" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1"
+       id="linearGradient2"
+       x1="122.94666"
+       y1="754.68323"
+       x2="733.7561"
+       y2="754.68323"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.03734683,0,0,0.02699932,304.08293,443.58409)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3"
+       id="linearGradient4"
+       x1="723.68359"
+       y1="754.68329"
+       x2="853.55084"
+       y2="754.68329"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.03734683,0,0,0.02699932,307.60406,443.6997)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5"
+       id="linearGradient6"
+       x1="385.16858"
+       y1="485.24692"
+       x2="409.82877"
+       y2="485.24692"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.27988678,0,0,0.22499431,225.80179,354.89784)" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-306.17459,-455.28019)">
+    <path
+       style="fill:url(#linearGradient2);fill-opacity:1;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       id="path1"
+       d="m 331.48639,470.13993 a 22.811796,6.1798763 0 0 1 -19.7556,-3.08994 22.811796,6.1798763 0 0 1 0,-6.17988 22.811796,6.1798763 0 0 1 19.7556,-3.08993 v 6.17987 z"
+       sodipodi:type="arc"
+       sodipodi:arc-type="slice"
+       sodipodi:start="1.5707963"
+       sodipodi:end="4.712389"
+       sodipodi:ry="6.1798763"
+       sodipodi:rx="22.811796"
+       sodipodi:cy="463.96005"
+       sodipodi:cx="331.48639"
+       inkscape:export-filename="..\infiernogato\tandy\assets\bullet.svg"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="fill:url(#linearGradient6);stroke:url(#linearGradient4);stroke-width:5;stroke-linecap:round;stroke-linejoin:bevel;stroke-dasharray:none;paint-order:stroke fill markers"
+       id="rect1"
+       width="4.1031942"
+       height="12.355469"
+       x="335.00482"
+       y="457.89789"
+       ry="0.57426822"
+       rx="0" />
+  </g>
+</svg>
