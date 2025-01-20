@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b57ww8ta473d"]
+[gd_scene load_steps=10 format=3 uid="uid://b57ww8ta473d"]
 
 [ext_resource type="Script" path="res://enemies/soul/soul.gd" id="1_fifoi"]
 [ext_resource type="Texture2D" uid="uid://dvqafpmqgq2yc" path="res://enemies/soul/soul.svg" id="2_d26u4"]
@@ -55,6 +55,42 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0.065, 0.065)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Soul:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Soul:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Soul:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_vto1l"]
@@ -114,16 +150,82 @@ tracks/2/keys = {
 "values": [Vector2(0.065, 0.065), Vector2(0.07, 0.07), Vector2(0.065, 0.065), Vector2(0.055, 0.055)]
 }
 
+[sub_resource type="Animation" id="Animation_b714a"]
+resource_name = "absorbed"
+length = 1.2
+step = 0.333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Soul:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.666667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.870919, 1.21999, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Soul:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.666667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.39626, -2.0944, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Soul:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.666667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.065, 0.065), Vector2(0.02, 0.02), Vector2(0.005, 0.005), Vector2(0.08, 0.08)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Soul:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Soul:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.0509804)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3owy7"]
 _data = {
 "RESET": SubResource("Animation_cb8su"),
+"absorbed": SubResource("Animation_b714a"),
 "afraid": SubResource("Animation_ggke7"),
 "timer_running_out": SubResource("Animation_vto1l")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_si4cj"]
 
-[node name="RigidBodySoul" type="RigidBody2D"]
+[node name="Soul" type="RigidBody2D"]
 collision_layer = 8
 collision_mask = 32
 mass = 4.136
@@ -133,7 +235,7 @@ script = ExtResource("1_fifoi")
 [node name="AreaShard" type="Area2D" parent="."]
 scale = Vector2(10.0511, 6.67404)
 collision_layer = 8
-collision_mask = 48
+collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaShard"]
 light_mask = 0
@@ -152,7 +254,6 @@ libraries = {
 autoplay = "timer_running_out"
 
 [node name="Soul" type="Sprite2D" parent="."]
-position = Vector2(1, 8)
 scale = Vector2(0.065, 0.065)
 texture = ExtResource("2_d26u4")
 offset = Vector2(-20, -160)
@@ -161,4 +262,6 @@ offset = Vector2(-20, -160)
 shape = SubResource("CapsuleShape2D_si4cj")
 
 [connection signal="area_entered" from="AreaShard" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="AreaShard" to="." method="_on_area_shard_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -26,4 +26,4 @@ func _on_area_2d_2_body_entered(body: Node2D) -> void:
 	print('SLASH!!!! ', body.name)
 	
 	if body is Soul:
-		body.soul_absorved()
+		(body as Soul).soul_absorbed()
